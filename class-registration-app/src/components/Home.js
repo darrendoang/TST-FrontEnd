@@ -5,7 +5,6 @@ import { useUserContext } from './UserContext'; // Import UserContext
 import fitnessImage from './fitness.jpg';
 
 const Home = () => {
-  const { userRole } = useUserContext();
   const navigate = useNavigate();
 
   const navigateToClasses = () => {
