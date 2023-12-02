@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Heading, Text, Button, Flex, Image, Center } from '@chakra-ui/react';
+import { Box, Heading, Text, Button, Flex, Image } from '@chakra-ui/react';
 import { useUserContext } from './UserContext'; // Import UserContext
 import fitnessImage from './fitness.jpg';
 
