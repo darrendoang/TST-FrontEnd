@@ -10,6 +10,7 @@ import Register from './components/Register';
 import PrivateRoute from './components/PrivateRoute';
 import CalorieCalculator from './components/CalorieCalculator'; // Import the CalorieCalculator component
 import './App.css';
+ 
 
 const App = () => {
 
