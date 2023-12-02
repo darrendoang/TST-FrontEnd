@@ -32,11 +32,9 @@ const Home = () => {
         <Button colorScheme="teal" onClick={navigateToCoaches} mb={2}>
           Meet Our Coaches
         </Button>
-        {userRole === 'admin' && (
-          <Button colorScheme="blue" onClick={() => navigate('/admin-classes')} mb={2}>
+          <Button colorScheme="blue" onClick={() => navigate('/admin-home')} mb={2}>
             Admin Dashboard
           </Button>
-        )}
       </Flex>
     </Box>
   );

@@ -43,13 +43,15 @@ else{
       </Flex>
 
       <VStack spacing={3} align="stretch">
+      {isCustomer && (
+        <>
         <NavLink to="/home" activeClassName="active" className="nav-link">
           <Link as={Flex} align="center" fontSize="md" justifyContent="center">
             <FaHome size="1.2em" style={{ marginRight: '8px' }} /> Home
           </Link>
         </NavLink>
-        {isCustomer && (
-          <>
+        
+          
         <NavLink to="/classes" activeClassName="active" className="nav-link">
           <Link as={Flex} align="center" fontSize="md" justifyContent="center">
             <FaDoorOpen size="1.2em" style={{ marginRight: '8px' }} /> Classes
@@ -73,6 +75,11 @@ else{
 
         {isAdmin && (
           <>
+          <NavLink to="/admin-home" activeClassName="active" className="nav-link">
+          <Link as={Flex} align="center" fontSize="md" justifyContent="center">
+            <FaHome size="1.2em" style={{ marginRight: '8px' }} /> Home
+          </Link>
+        </NavLink>
             <NavLink to="/admin-classes" activeClassName="active" className="nav-link">
               <Link as={Flex} align="center" fontSize="md" justifyContent="center">
                 <FaCogs size="1.2em" style={{ marginRight: '8px' }} /> Manage Classes
@@ -90,7 +97,14 @@ else{
                 <FaCogs size="1.2em" style={{ marginRight: '8px' }} /> Manage Users
               </Link>
             </NavLink>
+
+            <NavLink to="/admin-registrations" activeClassName="active" className="nav-link">
+              <Link as={Flex} align="center" fontSize="md" justifyContent="center">
+                <FaCogs size="1.2em" style={{ marginRight: '8px' }} /> Registrations
+              </Link>
+            </NavLink>
           </>
+          
         )}
 
         {/* Additional Links can be added here */}

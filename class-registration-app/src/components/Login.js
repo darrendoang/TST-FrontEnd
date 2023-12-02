@@ -33,7 +33,7 @@ const Login = () => {
 
         // Navigate based on role
         if (response.data.role === 'admin') {
-          navigate('/home');  // Navigate to admin route
+          navigate('/admin-home');  // Navigate to admin route
         } else {
           navigate('/home');  // Navigate to home for regular users
         }
