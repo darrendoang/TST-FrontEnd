@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from './axiosInstance';
-import {
-  Box, Heading, Text, List, ListItem, CircularProgress
-} from '@chakra-ui/react';
+import { Box, Heading, Text, List, ListItem, CircularProgress, UnorderedList } from '@chakra-ui/react';
 
 const AdminRegistrations = () => {
   const [classes, setClasses] = useState([]);
@@ -53,14 +51,15 @@ const AdminRegistrations = () => {
           {classes.map(classItem => (
             <ListItem key={classItem.class_id}>
               <Box borderWidth="1px" p={4} borderRadius="lg" boxShadow="md" bg="white" mb={4}>
-                <Heading as="h3" size="md" mb={2}>{classItem.class_type}</Heading>
-                <List spacing={2}>
+                <Heading as="h3" size="lg" mb={2}>{classItem.class_type}</Heading>
+                <Text fontWeight="semibold" mb={2} color="gray.600">Users Registered:</Text>
+                <UnorderedList pl={5} mb={3} style={{ listStyleType: 'circle' }}>
                   {registrations.filter(reg => reg.class_id === classItem.class_id).map(reg => (
                     <ListItem key={reg.user_id}>
-                      <Text>User: {getUsername(reg.user_id)}</Text>
+                      <Text fontSize="sm">{getUsername(reg.user_id)}</Text>
                     </ListItem>
                   ))}
-                </List>
+                </UnorderedList>
               </Box>
             </ListItem>
           ))}
