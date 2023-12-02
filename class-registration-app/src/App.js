@@ -6,6 +6,8 @@ import Home from './components/Home';
 import Classes from './components/Classes';
 import Coaches from './components/Coach';
 import AdminClasses from './components/AdminClasses';
+import AdminCoaches from './components/AdminCoaches';
+import AdminUsers from './components/AdminUsers';
 import Register from './components/Register';
 import PrivateRoute from './components/PrivateRoute';
 import CalorieCalculator from './components/CalorieCalculator'; // Import the CalorieCalculator component
@@ -70,6 +72,24 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <AdminClasses />
+                </PrivateRoute>
+              } 
+            />
+
+<Route 
+              path="/admin-coaches"
+              element={
+                <PrivateRoute>
+                  <AdminCoaches />
+                </PrivateRoute>
+              } 
+            />
+
+<Route 
+              path="/admin-users"
+              element={
+                <PrivateRoute>
+                  <AdminUsers />
                 </PrivateRoute>
               } 
             />

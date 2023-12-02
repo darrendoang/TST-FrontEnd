@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from './axiosInstance';
 import {
-  Box, Heading, Text, List, ListItem, CircularProgress, Button, FormControl, FormLabel, Input, Stack,
+  Box,Select,  Heading, Text, List, ListItem, CircularProgress, Button, FormControl, FormLabel, Input, Stack,
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Flex
 } from '@chakra-ui/react';
 
@@ -101,9 +101,13 @@ const AdminUsers = () => {
                   <Input name="password" type="password" value={newUser.password} onChange={handleInputChange} />
                 </FormControl>
                 <FormControl isRequired>
-                  <FormLabel>Role:</FormLabel>
-                  <Input name="role" value={newUser.role} onChange={handleInputChange} />
-                </FormControl>
+                <FormLabel>Role:</FormLabel>
+                <Select name="role" value={newUser.role} onChange={handleInputChange}>
+                  <option value="">Select Role</option>
+                  <option value="admin">Admin</option>
+                  <option value="customer">Customer</option>
+                </Select>
+              </FormControl>
               </Stack>
             </Box>
           </ModalBody>
@@ -111,3 +115,32 @@ const AdminUsers = () => {
             <Button colorScheme="blue" mr={3} onClick={onClose}>Close</Button>
             <Button type="submit" colorScheme="teal" onClick={handleSubmit}>
               {isEditMode ? 'Save Changes' : 'Add User'}
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      {/* Render the list of users */}
+      {isLoading ? (
+        <CircularProgress isIndeterminate color="teal.300" />
+      ) : error ? (
+        <Text color="red.500">{error}</Text>
+      ) : (
+        <List spacing={4} maxW="lg" mx="auto">
+          {users.map((userItem) => (
+            <ListItem key={userItem.user_id}>
+              <Box borderWidth="1px" p={4} borderRadius="lg" boxShadow="md" bg="white" mb={2}>
+                <Heading as="h2" size="lg">{userItem.username}</Heading>
+                <Text>Role: {userItem.role}</Text>
+                <Button colorScheme="red" onClick={() => handleDeleteUser(userItem.user_id)}>Delete</Button>
+                <Button ml={3} colorScheme="teal" onClick={() => openEditModal(userItem)}>Edit</Button>
+              </Box>
+            </ListItem>
+          ))}
+        </List>
+      )}
+    </Box>
+  );
+};
+
+export default AdminUsers;

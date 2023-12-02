@@ -1,45 +1,43 @@
-// src/components/Home.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Heading, Text, Button } from '@chakra-ui/react';
-
+import { Box, Heading, Text, Button, Flex, Image, Center } from '@chakra-ui/react';
+import { useUserContext } from './UserContext'; // Import UserContext
+import fitnessImage from './fitness.jpg';
 
 const Home = () => {
+  const { userRole } = useUserContext();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/login');
+  const navigateToClasses = () => {
+    navigate('/classes');
   };
 
-  const goToClasses = () => {
-    navigate('/classes'); // This function will navigate to the /classes route
+  const navigateToCoaches = () => {
+    navigate('/coaches');
   };
 
   return (
-    <Box maxW="md" mx="auto" mt={8} p={4} borderWidth="1px" borderRadius="md">
-      <Heading as="h1" size="xl" mb={4}>
-        Home Page
-      </Heading>
-      <Text>Welcome to the home page of the Fitness Coaching App!</Text>
-      <Button
-        mt={4}
-        colorScheme="blue"
-        size="lg"
-        fontSize="md"
-        onClick={handleLogout}
-      >
-        Logout
-      </Button>
-      <Button
-        mt={4}
-        colorScheme="blue"
-        size="lg"
-        fontSize="md"
-        onClick={goToClasses}
-      >
-        See Available Classes
-      </Button>
+    <Box maxW="lg" mx="auto" mt={8} p={4} borderWidth="1px" borderRadius="md">
+      <Flex flexDirection="column" alignItems="center" justifyContent="center">
+        <Heading as="h1" size="xl" align="center" mb={4}>
+          Welcome to Class Registration App
+        </Heading>
+        <Text fontSize="lg" textAlign="center" mb={6}>
+          Explore classes, meet coaches, and manage your fitness journey!
+        </Text>
+        <Image src={fitnessImage} alt="Fitness"  mb={4} />
+        <Button colorScheme="teal" onClick={navigateToClasses} mb={2}>
+          Explore Classes
+        </Button>
+        <Button colorScheme="teal" onClick={navigateToCoaches} mb={2}>
+          Meet Our Coaches
+        </Button>
+        {userRole === 'admin' && (
+          <Button colorScheme="blue" onClick={() => navigate('/admin-classes')} mb={2}>
+            Admin Dashboard
+          </Button>
+        )}
+      </Flex>
     </Box>
   );
 };

@@ -7,14 +7,12 @@ import {
   Input,
   Button,
   Text,
+  Link,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 // Import axios instances
 import api from './axiosInstance';
-
-// Then use api.axiosInstance and api.axiosInstance2 to refer to your Axios instances
-
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -116,6 +114,9 @@ const Register = () => {
         <Button type="submit" mt={4} colorScheme="teal">
           Register
         </Button>
+        <Link marginLeft= "6px"  mt={4} color="teal.500" onClick={() => navigate('/login')}>
+          Back to Login
+        </Link>
       </form>
     </Box>
   );
