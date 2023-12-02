@@ -18,5 +18,7 @@ if (token2) {
   axiosInstance2.defaults.headers.common['Authorization'] = `Bearer ${token2}`;
 }
 
-export default { axiosInstance, axiosInstance2 };
+const api = { axiosInstance, axiosInstance2 };
+
+export default api;
 
