@@ -43,7 +43,7 @@ const AdminHome = () => {
           <>
             <Button colorScheme="blue" onClick={navigateToClasses} mb={2}>Classes</Button>
             <Button colorScheme="blue" onClick={navigateToCoaches} mb={2}>Coaches</Button>
-            <Button colorScheme="blue" onClick={navigateToCalculator} mb={2}>Calorie Calculator</Button>
+            <Button colorScheme="blue" onClick={navigateToCalculator} mb={2}>Class Recommendation</Button>
           </>
         )}
       </Flex>
